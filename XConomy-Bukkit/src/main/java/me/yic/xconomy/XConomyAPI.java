@@ -74,7 +74,7 @@ public class XConomyAPI {
                 return 2;
             }
         }
-        Cache.change("PLUGIN_API", u, playername, amount, isadd, "N/A");
+        Cache.change("R.PA", u, playername, amount, isadd, "N/A");
         return 0;
     }
 
