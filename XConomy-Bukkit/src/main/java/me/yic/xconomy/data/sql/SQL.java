@@ -276,13 +276,7 @@ public class SQL {
     public static void selectNonPlayer(String playerName) {
         try {
             Connection connection = database.getConnectionAndCheck();
-            String query;
-
-            if (DataBaseINFO.isMySQL()) {
-                query = "select * from " + tableNonPlayerName + " where binary account = ?";
-            } else {
-                query = "select * from " + tableNonPlayerName + " where account = ?";
-            }
+            String query = "select * from " + tableNonPlayerName + " where account = ?";
 
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, playerName);
@@ -306,21 +300,7 @@ public class SQL {
     public static void selectUID(String name) {
         try {
             Connection connection = database.getConnectionAndCheck();
-            String query;
-
-            if (ServerINFO.IgnoreCase) {
-                if (DataBaseINFO.isMySQL()) {
-                    query = "select * from " + tableName + " where player = ?";
-                } else {
-                    query = "select * from " + tableName + " where player = ? COLLATE NOCASE";
-                }
-            }else {
-                if (DataBaseINFO.isMySQL()) {
-                    query = "select * from " + tableName + " where binary player = ?";
-                } else {
-                    query = "select * from " + tableName + " where player = ?";
-                }
-            }
+            String query = "select * from " + tableName + " where player = ?";
 
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, name);
@@ -410,12 +390,12 @@ public class SQL {
             String operation = "Error";
             if (isAdd != null) {
                 if (isAdd) {
-                    operation = "DEPOSIT";
+                    operation = "D";
                 } else {
-                    operation = "WITHDRAW";
+                    operation = "W";
                 }
             }else if (isAdd == null) {
-                operation = "SET";
+                operation = "S";
             }
             try {
                 String query;
