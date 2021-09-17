@@ -252,12 +252,12 @@ public class CommandHandler {
                 }
 
                 String com = commandName + " " + args[0] + " " + amount;
-                Cache.change("PLAYER_COMMAND", ((Player) sender).getUniqueId(), sender.getName(), taxamount, false, com);
+                Cache.change("R.PC", ((Player) sender).getUniqueId(), sender.getName(), taxamount, false, com);
                 sendMessages(sender, translateColorCodes("prefix") + translateColorCodes("pay")
                         .replace("%player%", realname)
                         .replace("%amount%", amountFormatted));
 
-                Cache.change("PLAYER_COMMAND", targetUUID, realname, amount, true, com);
+                Cache.change("R.PC", targetUUID, realname, amount, true, com);
                 String mess = translateColorCodes("prefix") + translateColorCodes("pay_receive")
                         .replace("%player%", sender.getName())
                         .replace("%amount%", amountFormatted);
@@ -406,7 +406,7 @@ public class CommandHandler {
                                     return true;
                                 }
 
-                                Cache.change("ADMIN_COMMAND", targetUUID, realname, amount, true, com);
+                                Cache.change("R.AC", targetUUID, realname, amount, true, com);
                                 sendMessages(sender, translateColorCodes("prefix") + translateColorCodes("money_give")
                                         .replace("%player%", realname)
                                         .replace("%amount%", amountFormatted));
@@ -453,7 +453,7 @@ public class CommandHandler {
                                     return true;
                                 }
 
-                                Cache.change("ADMIN_COMMAND", targetUUID, realname, amount, false, com);
+                                Cache.change("R.AC", targetUUID, realname, amount, false, com);
                                 sendMessages(sender, translateColorCodes("prefix") + translateColorCodes("money_take")
                                         .replace("%player%", realname)
                                         .replace("%amount%", amountFormatted));
@@ -483,7 +483,7 @@ public class CommandHandler {
                                     return true;
                                 }
 
-                                Cache.change("ADMIN_COMMAND", targetUUID, realname, amount, null, com);
+                                Cache.change("R.AC", targetUUID, realname, amount, null, com);
                                 sendMessages(sender, translateColorCodes("prefix") + translateColorCodes("money_set")
                                         .replace("%player%", realname)
                                         .replace("%amount%", amountFormatted));
@@ -572,7 +572,7 @@ public class CommandHandler {
                                     return true;
                                 }
 
-                                Cache.changeall(args[2], "ADMIN_COMMAND", amount, true, com);
+                                Cache.changeall(args[2], "R.AC", amount, true, com);
                                 sendMessages(sender, translateColorCodes("prefix") + translateColorCodes("money_give")
                                         .replace("%player%", target)
                                         .replace("%amount%", amountFormatted));
@@ -589,7 +589,7 @@ public class CommandHandler {
                                     return true;
                                 }
 
-                                Cache.changeall(args[2], "ADMIN_COMMAND", amount, false, com);
+                                Cache.changeall(args[2], "R.AC", amount, false, com);
                                 sendMessages(sender, translateColorCodes("prefix") + translateColorCodes("money_take")
                                         .replace("%player%", target)
                                         .replace("%amount%", amountFormatted));
