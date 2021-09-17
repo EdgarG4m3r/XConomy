@@ -42,21 +42,8 @@ public class SQLCreateNewAccount extends SQL{
     private static boolean checkUser(Player player, Connection connection) {
         boolean doubledata = false;
         try {
-            String query;
-            if (ServerINFO.IgnoreCase) {
-                if (DataBaseINFO.isMySQL()) {
-                    query = "select * from " + tableName + " where player = ?";
-                } else {
-                    query = "select * from " + tableName + " where player = ? COLLATE NOCASE";
-                }
-            }else {
-                if (DataBaseINFO.isMySQL()) {
-                    query = "select * from " + tableName + " where binary player = ?";
-                } else {
-                    query = "select * from " + tableName + " where player = ?";
-                }
-            }
-
+            String query = "select * from " + tableName + " where player = ?";
+            
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, player.getName());
 
